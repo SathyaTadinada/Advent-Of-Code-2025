@@ -15,15 +15,19 @@ fn part_2(data: &str) -> isize {
 
 crate::test_day!(
 "
-3   4
-4   3
-2   5
-1   3
-3   9
-3   3
+L68
+L30
+R48
+L5
+R60
+L55
+L1
+L99
+R14
+L82
 ",
 {
-    part_1 => 11,
+    part_1 => 3,
     part_2 => 13
 }
 );
