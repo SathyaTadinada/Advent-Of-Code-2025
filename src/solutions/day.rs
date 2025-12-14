@@ -5,7 +5,7 @@ macro_rules! day {
 
         pub fn run(input: &str, which: $crate::Part) {
             let day_no = $crate::extract_day_number(file!());
-            println!("--- Day {:02}: {} ---", day_no, TITLE);
+            println!("--- Day {}: {} ---", day_no, TITLE);
 
             match which {
                 $crate::Part::One => {
@@ -31,7 +31,7 @@ macro_rules! day {
 
         pub fn run(input: &str, which: $crate::Part) {
             let day_no = $crate::extract_day_number(file!());
-            println!("--- Day {:02}: {} ---", day_no, TITLE);
+            println!("--- Day {}: {} ---", day_no, TITLE);
 
             match which {
                 $crate::Part::One | $crate::Part::Both => {
@@ -39,7 +39,7 @@ macro_rules! day {
                     println!("Part 1: {:#?}", result);
                 }
                 $crate::Part::Two => {
-                    eprintln!("Part 2 not implemented for day {}", day_no);
+                    eprintln!("Part 2 not implemented for Day {}", day_no);
                 }
             }
         }

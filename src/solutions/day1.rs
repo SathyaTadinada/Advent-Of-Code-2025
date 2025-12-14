@@ -1,4 +1,4 @@
-crate::day!("Historian Hysteria" => {
+crate::day!("Secret Entrance" => {
     part_1,
     part_2
 });
