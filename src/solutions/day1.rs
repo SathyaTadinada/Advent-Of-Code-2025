@@ -23,7 +23,6 @@ fn part_1(data: &str) -> isize {
         if dial == 0 {
             count += 1;
         }
-
     }
     count as isize
 }
@@ -33,37 +32,21 @@ fn part_2(data: &str) -> isize {
     let mut count: isize = 0;
 
     for line in data.trim().lines() {
-        let direction: char = line[0..1].parse().unwrap();
-        let distance: isize = line[1..].parse().unwrap();
+        let dir = line.as_bytes()[0] as char;
+        let dist: isize = line[1..].parse().unwrap();
 
-        if direction == 'L' {
-            if dial != 0 {
-                if distance >= dial {
-                    count += 1 + (distance - dial) / 100;
-                }
-            } else {
-                count += distance / 100;
-            }
+        let steps_to_zero = if dir == 'L' { dial } else { (100 - dial) % 100 };
 
-            dial -= distance;
-            while dial < 0 {
-                dial += 100;
-            }
+        count += if steps_to_zero == 0 {
+            dist / 100
+        } else if dist >= steps_to_zero {
+            1 + (dist - steps_to_zero) / 100
         } else {
-            let steps_to_zero = (100 - dial) % 100;
-            if steps_to_zero != 0 {
-                if distance >= steps_to_zero {
-                    count += 1 + (distance - steps_to_zero) / 100;
-                }
-            } else {
-                count += distance / 100;
-            }
+            0
+        };
 
-            dial += distance;
-            while dial >= 100 {
-                dial -= 100;
-            }
-        }
+        let delta = if dir == 'L' { -dist } else { dist };
+        dial = (dial + delta).rem_euclid(100);
     }
 
     count
