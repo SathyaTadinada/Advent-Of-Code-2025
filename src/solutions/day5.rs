@@ -1,5 +1,3 @@
-use std::collections::HashSet;
-
 crate::day!("Cafeteria" => {
     part_1,
     part_2
